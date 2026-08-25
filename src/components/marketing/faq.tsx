@@ -49,11 +49,11 @@ const QUESTIONS: Array<{ q: string; a: string }> = [
 
 export function Faq() {
   return (
-    <section id="faq" className="section surface-sunken">
+    <section id="faq" className="section relative">
       <div className="container-page max-w-3xl">
         <div className="text-center">
           <p className="eyebrow">Questions</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">The ones worth asking</h2>
+          <h2 className="display display-lg mt-4">The ones worth asking</h2>
           <p className="mt-4 text-secondary">
             Including the one most job platforms avoid.
           </p>
@@ -63,7 +63,7 @@ export function Faq() {
           {QUESTIONS.map((item) => (
             <details
               key={item.q}
-              className="card group overflow-hidden px-5 py-1 transition-[border-color] open:border-jade-300 dark:open:border-jade-700"
+              className="panel group overflow-hidden px-5 py-1 open:border-jade-400/40"
             >
               <summary className="tap flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold [&::-webkit-details-marker]:hidden">
                 {item.q}
@@ -71,7 +71,8 @@ export function Faq() {
                     icon swap and nothing to load. */}
                 <span
                   aria-hidden="true"
-                  className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-jade-50 text-jade-700 transition-transform duration-300 group-open:rotate-45 dark:bg-jade-950 dark:text-jade-300"
+                  className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-jade-300 transition-transform duration-300 group-open:rotate-45"
+                  style={{ background: 'rgb(53 189 154 / 0.14)' }}
                 >
                   <span className="absolute h-[1.5px] w-3 rounded bg-current" />
                   <span className="absolute h-3 w-[1.5px] rounded bg-current" />

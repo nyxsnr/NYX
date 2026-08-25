@@ -20,11 +20,14 @@ export async function SiteHeader() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b"
+      className="sticky top-0 z-40"
       style={{
-        background: 'color-mix(in srgb, var(--surface) 82%, transparent)',
-        backdropFilter: 'blur(14px) saturate(1.6)',
-        WebkitBackdropFilter: 'blur(14px) saturate(1.6)',
+        // Nearly transparent so the mesh reads through it; the blur alone
+        // keeps the links legible over whatever scrolls underneath.
+        background: 'color-mix(in srgb, var(--surface) 55%, transparent)',
+        backdropFilter: 'blur(18px) saturate(1.6)',
+        WebkitBackdropFilter: 'blur(18px) saturate(1.6)',
+        borderBottom: '1px solid var(--border)',
       }}
     >
       <div className="container-page flex max-w-7xl items-center justify-between gap-4 py-3">

@@ -32,13 +32,13 @@ const COLUMNS: Array<{ title: string; links: Array<{ label: string; href: string
 /**
  * Site footer.
  *
- * Rendered on the deep band so the page closes on the brand colour rather than
- * fading out into grey — and so the legal note at the bottom reads as a
- * deliberate statement rather than fine print someone forgot to style.
+ * Inherits the surrounding surface rather than painting its own: on the
+ * marketing pages that is the cinematic ground, so the page fades out into
+ * the same dark it opened on instead of hitting a second, competing band.
  */
 export function SiteFooter() {
   return (
-    <footer className="band-deep">
+    <footer style={{ borderTop: '1px solid var(--border)' }}>
       <div className="container-page max-w-7xl py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -54,7 +54,7 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-3 text-sm">
                 {column.links.map((link) => (
                   <li key={link.href + link.label}>
-                    <Link href={link.href} className="link-underline text-secondary hover:text-jade-200">
+                    <Link href={link.href} className="link-underline text-secondary hover:text-jade-300">
                       {link.label}
                     </Link>
                   </li>
