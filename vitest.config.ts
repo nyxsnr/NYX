@@ -6,6 +6,9 @@ export default defineConfig({
     environment: 'node',
     include: ['tests/**/*.test.ts'],
     setupFiles: ['tests/setup.ts'],
+    // Applies migrations to TEST_DATABASE_URL before any suite runs, so the
+    // integration suites work against an empty database.
+    globalSetup: ['tests/global-setup.ts'],
     // Integration tests share one Postgres database; run files serially so
     // truncation in one suite cannot race another suite's fixtures.
     fileParallelism: false,

@@ -13,12 +13,15 @@
  *   npm run db:seed -- --reset   (clears existing demo data first)
  */
 import postgres from 'postgres';
+import { loadEnv } from './lib/load-env';
 import { hashPassword } from '../src/lib/auth/password';
 import { computeMatch, type WorkerMatchProfile } from '../src/lib/matching';
 import { computeReadiness, type ReadinessSnapshot } from '../src/lib/readiness';
 import { hashingEmbed, contentHash, opportunityEmbeddingText, workerEmbeddingText } from '../src/lib/ai/embeddings';
 import { DEMO_WORKERS } from '../db/seed/data';
 import { DEMO_EMPLOYERS, DEMO_JOBS, DEMO_TASKS } from '../db/seed/employers';
+
+loadEnv();
 
 type Sql = postgres.Sql<Record<string, never>>;
 

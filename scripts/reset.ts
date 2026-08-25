@@ -9,6 +9,9 @@
  */
 import postgres from 'postgres';
 import { spawnSync } from 'node:child_process';
+import { loadEnv } from './lib/load-env';
+
+loadEnv();
 
 async function main() {
   const url = process.env.DATABASE_URL;

@@ -10,6 +10,9 @@
 import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import postgres from 'postgres';
+import { loadEnv } from './lib/load-env';
+
+loadEnv();
 
 interface SkillRow {
   slug: string;
