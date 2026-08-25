@@ -152,7 +152,7 @@ export function TalentSearch({
       {results && !busy ? (
         results.length === 0 ? (
           <EmptyState
-            icon="🔍"
+            icon="search"
             title="No workers match that search."
             description="Try fewer capabilities, a lower readiness threshold, or turn off 'verified evidence only'. You can also post the role and let matching bring people to you."
             actionLabel="Post a job"

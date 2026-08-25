@@ -85,7 +85,7 @@ export default async function PublicJobsPage({
 
       {items.length === 0 ? (
         <EmptyState
-          icon="🔍"
+          icon="search"
           title="No jobs match that search."
           description="Try a broader search, or create a free account and we will match you to work as employers post it."
           actionLabel="Create a free account"
@@ -95,7 +95,7 @@ export default async function PublicJobsPage({
         <ul className="space-y-3">
           {items.map((job) => (
             <li key={job.id}>
-              <Link href={`/jobs/${job.id}`} className="card block p-4 hover:surface-sunken sm:p-5">
+              <Link href={`/jobs/${job.id}`} className="card card-interactive block p-4 sm:p-5">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h2 className="text-lg font-semibold leading-snug">{job.title}</h2>

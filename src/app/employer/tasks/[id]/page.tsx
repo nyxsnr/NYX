@@ -60,7 +60,7 @@ export default async function EmployerTaskDetail({ params }: { params: Promise<{
           <ul className="space-y-2">
             {assignments.map((assignment) => (
               <li key={assignment.id}>
-                <Link href={`/employer/work/${assignment.id}`} className="card flex flex-wrap items-center justify-between gap-3 p-4 hover:surface-sunken">
+                <Link href={`/employer/work/${assignment.id}`} className="card card-interactive flex flex-wrap items-center justify-between gap-3 p-4">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{assignment.worker_name}</p>
                     <p className="text-sm text-muted">
@@ -87,7 +87,7 @@ export default async function EmployerTaskDetail({ params }: { params: Promise<{
 
       {applicants.length === 0 ? (
         <EmptyState
-          icon="⚡"
+          icon="bolt"
           title="No proposals yet."
           description={
             task.status === 'PUBLISHED'

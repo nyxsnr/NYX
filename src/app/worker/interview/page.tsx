@@ -44,7 +44,7 @@ export default async function InterviewPage() {
             <ul className="space-y-2">
               {sessions.map((session) => (
                 <li key={session.id}>
-                  <Link href={`/worker/interview/${session.id}`} className="card flex items-center justify-between gap-3 p-4 hover:surface-sunken">
+                  <Link href={`/worker/interview/${session.id}`} className="card card-interactive flex items-center justify-between gap-3 p-4">
                     <div className="min-w-0">
                       <p className="truncate font-semibold">{session.role_title}</p>
                       <p className="text-sm text-muted">

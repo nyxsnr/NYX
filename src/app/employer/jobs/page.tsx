@@ -36,7 +36,7 @@ export default async function EmployerJobsPage() {
 
       {items.length === 0 ? (
         <EmptyState
-          icon="💼"
+          icon="briefcase"
           title="You have not posted a job yet."
           description="Describe the role in your own words and we will draft a complete posting for you to review."
           actionLabel="Post a job"
@@ -46,7 +46,7 @@ export default async function EmployerJobsPage() {
         <ul className="space-y-2">
           {items.map((job) => (
             <li key={job.id}>
-              <Link href={`/employer/jobs/${job.id}`} className="card flex flex-wrap items-center justify-between gap-3 p-4 hover:surface-sunken">
+              <Link href={`/employer/jobs/${job.id}`} className="card card-interactive flex flex-wrap items-center justify-between gap-3 p-4">
                 <div className="min-w-0">
                   <p className="truncate font-semibold">{job.title}</p>
                   <p className="text-sm text-muted">

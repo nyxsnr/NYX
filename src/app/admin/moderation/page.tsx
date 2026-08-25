@@ -54,7 +54,7 @@ export default async function ModerationPage() {
       />
 
       {items.length === 0 ? (
-        <EmptyState icon="🛡" title="Queue is clear." description="Nothing is waiting for review right now." />
+        <EmptyState icon="shield" title="Queue is clear." description="Nothing is waiting for review right now." />
       ) : (
         <ModerationQueue
           items={items.map((item) => ({

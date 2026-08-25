@@ -49,19 +49,35 @@ const QUESTIONS: Array<{ q: string; a: string }> = [
 
 export function Faq() {
   return (
-    <section id="faq" className="border-b py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <h2 className="text-3xl font-bold tracking-tight">Questions</h2>
-        <div className="mt-8 divide-y">
+    <section id="faq" className="section surface-sunken">
+      <div className="container-page max-w-3xl">
+        <div className="text-center">
+          <p className="eyebrow">Questions</p>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">The ones worth asking</h2>
+          <p className="mt-4 text-secondary">
+            Including the one most job platforms avoid.
+          </p>
+        </div>
+
+        <div className="mt-12 space-y-3">
           {QUESTIONS.map((item) => (
-            <details key={item.q} className="group py-4">
-              <summary className="tap flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+            <details
+              key={item.q}
+              className="card group overflow-hidden px-5 py-1 transition-[border-color] open:border-jade-300 dark:open:border-jade-700"
+            >
+              <summary className="tap flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold [&::-webkit-details-marker]:hidden">
                 {item.q}
-                <span aria-hidden="true" className="shrink-0 text-muted transition-transform group-open:rotate-45">
-                  +
+                {/* A plus that rotates into a minus: one glyph, two states, no
+                    icon swap and nothing to load. */}
+                <span
+                  aria-hidden="true"
+                  className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-jade-50 text-jade-700 transition-transform duration-300 group-open:rotate-45 dark:bg-jade-950 dark:text-jade-300"
+                >
+                  <span className="absolute h-[1.5px] w-3 rounded bg-current" />
+                  <span className="absolute h-3 w-[1.5px] rounded bg-current" />
                 </span>
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-secondary">{item.a}</p>
+              <p className="pb-5 pr-10 text-sm leading-relaxed text-secondary">{item.a}</p>
             </details>
           ))}
         </div>

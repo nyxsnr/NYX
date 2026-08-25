@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Wordmark } from './wordmark';
 
 const COLUMNS: Array<{ title: string; links: Array<{ label: string; href: string }> }> = [
   {
@@ -28,22 +29,21 @@ const COLUMNS: Array<{ title: string; links: Array<{ label: string; href: string
   },
 ];
 
+/**
+ * Site footer.
+ *
+ * Rendered on the deep band so the page closes on the brand colour rather than
+ * fading out into grey — and so the legal note at the bottom reads as a
+ * deliberate statement rather than fine print someone forgot to style.
+ */
 export function SiteFooter() {
   return (
-    <footer className="border-t surface-sunken">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="band-deep">
+      <div className="container-page max-w-7xl py-14 sm:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2 font-bold">
-              <span
-                aria-hidden="true"
-                className="flex h-8 w-8 items-center justify-center rounded-lg bg-jade-600 text-sm text-white"
-              >
-                K
-              </span>
-              KaziOS
-            </div>
-            <p className="mt-3 max-w-xs text-sm text-secondary">
+            <Wordmark />
+            <p className="mt-4 max-w-xs text-sm text-secondary">
               AI-powered employment infrastructure. Built in Kenya, for Kenya.
             </p>
           </div>
@@ -51,10 +51,10 @@ export function SiteFooter() {
           {COLUMNS.map((column) => (
             <nav key={column.title} aria-label={column.title}>
               <h2 className="text-sm font-semibold">{column.title}</h2>
-              <ul className="mt-3 space-y-2 text-sm">
+              <ul className="mt-4 space-y-3 text-sm">
                 {column.links.map((link) => (
                   <li key={link.href + link.label}>
-                    <Link href={link.href} className="text-secondary hover:text-jade-600 dark:hover:text-jade-300">
+                    <Link href={link.href} className="link-underline text-secondary hover:text-jade-200">
                       {link.label}
                     </Link>
                   </li>
@@ -64,14 +64,12 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-10 border-t pt-6 text-xs text-muted">
-          <p>
+        <div className="mt-12 border-t pt-6 text-xs text-muted">
+          <p className="max-w-3xl">
             KaziOS does not guarantee employment or income. Any earnings figures shown are indicative
             ranges for the Kenyan market, not offers.
           </p>
-          <p className="mt-2">
-            © {new Date().getFullYear()} KaziOS. Nairobi, Kenya.
-          </p>
+          <p className="mt-3">© {new Date().getFullYear()} KaziOS. Nairobi, Kenya.</p>
         </div>
       </div>
     </footer>

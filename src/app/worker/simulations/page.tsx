@@ -66,7 +66,7 @@ export default async function SimulationsPage() {
           <ul className="space-y-2">
             {evaluated.map((attempt) => (
               <li key={attempt.id}>
-                <Link href={`/worker/simulations/${attempt.id}`} className="card flex items-center justify-between gap-4 p-4 hover:surface-sunken">
+                <Link href={`/worker/simulations/${attempt.id}`} className="card card-interactive flex items-center justify-between gap-4 p-4">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{attempt.template_title}</p>
                     <p className="text-sm text-muted">

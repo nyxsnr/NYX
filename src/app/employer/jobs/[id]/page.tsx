@@ -55,7 +55,7 @@ export default async function EmployerJobDetail({ params }: { params: Promise<{ 
 
       {applicants.length === 0 ? (
         <EmptyState
-          icon="👤"
+          icon="user"
           title="No applicants yet."
           description={
             job.status === 'PUBLISHED'

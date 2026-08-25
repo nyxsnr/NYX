@@ -37,7 +37,7 @@ export default async function ProjectsPage() {
 
       {projects.length === 0 ? (
         <EmptyState
-          icon="🗂"
+          icon="folder"
           title="No projects yet."
           description={'Try: "I need my restaurant\'s social media managed" or "Clean up our customer database". We will propose the tasks, and nothing is published until you approve it.'}
           actionLabel="Describe a project"

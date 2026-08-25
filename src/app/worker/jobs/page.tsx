@@ -32,7 +32,7 @@ export default async function WorkerJobsPage() {
       <>
         <PageHeader title="Jobs for you" />
         <EmptyState
-          icon="◎"
+          icon="compass"
           title="No jobs match you yet."
           description={
             suggestion
@@ -68,7 +68,7 @@ export default async function WorkerJobsPage() {
       <ul className="space-y-3">
         {jobs.map(({ job, match, alreadyApplied }) => (
           <li key={job.id}>
-            <Link href={`/worker/jobs/${job.id}`} className="card block p-4 hover:surface-sunken sm:p-5">
+            <Link href={`/worker/jobs/${job.id}`} className="card card-interactive block p-4 sm:p-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
                   <h2 className="text-lg font-semibold leading-snug">{job.title}</h2>

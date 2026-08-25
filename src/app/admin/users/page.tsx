@@ -86,7 +86,7 @@ export default async function AdminUsersPage({
       </form>
 
       {users.length === 0 ? (
-        <EmptyState icon="👥" title="No users match." description="Try a different search." />
+        <EmptyState icon="users" title="No users match." description="Try a different search." />
       ) : (
         <UserTable
           users={users.map((user) => ({
