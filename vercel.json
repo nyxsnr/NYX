@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "regions": ["fra1"],
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "crons": [
+    {
+      "path": "/api/cron/housekeeping",
+      "schedule": "0 2 * * *"
+    }
+  ],
+  "functions": {
+    "src/app/api/worker/cv/route.ts": { "maxDuration": 60 },
+    "src/app/api/worker/assessment/route.ts": { "maxDuration": 60 },
+    "src/app/api/worker/simulations/attempts/[id]/route.ts": { "maxDuration": 60 },
+    "src/app/api/employer/ai/decompose/route.ts": { "maxDuration": 60 }
+  }
+}

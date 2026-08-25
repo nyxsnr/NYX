@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KaziOS">
+  <rect width="64" height="64" rx="14" fill="#0a7a63"/>
+  <path d="M18 16h7v14.5L38.5 16H47L33.5 31.5 47.5 48H39L25 31.8V48h-7z" fill="#fff"/>
+  <circle cx="47" cy="19" r="4.5" fill="#e29c39"/>
+</svg>
