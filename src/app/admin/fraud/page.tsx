@@ -43,7 +43,7 @@ export default async function AdminFraudPage() {
       </div>
 
       {flags.length === 0 ? (
-        <EmptyState icon="⚠" title="No open signals." description="Nothing has been flagged for review." />
+        <EmptyState icon="warning" title="No open signals." description="Nothing has been flagged for review." />
       ) : (
         <FraudQueue
           flags={flags.map((flag) => ({

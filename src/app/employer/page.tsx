@@ -84,7 +84,7 @@ export default async function EmployerDashboard() {
           <ul className="mt-3 space-y-2">
             {pending.map((item) => (
               <li key={item.id}>
-                <Link href={`/employer/work/${item.assignment_id}`} className="card flex items-center justify-between gap-4 p-4 hover:surface-sunken">
+                <Link href={`/employer/work/${item.assignment_id}`} className="card card-interactive flex items-center justify-between gap-4 p-4">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{item.task_title}</p>
                     <p className="text-sm text-muted">
@@ -123,7 +123,7 @@ export default async function EmployerDashboard() {
 
       {nothingPosted ? (
         <EmptyState
-          icon="📋"
+          icon="clipboard"
           title="Nothing posted yet."
           description="Post a permanent role, or describe a project in plain language and we will break it into scoped, priced tasks for your approval."
           actionLabel="Describe a project"
@@ -144,7 +144,7 @@ export default async function EmployerDashboard() {
           <ul className="space-y-2">
             {applicants.map((applicant) => (
               <li key={applicant.id}>
-                <Link href={`/employer/jobs/${applicant.job_id}`} className="card flex flex-wrap items-center justify-between gap-3 p-4 hover:surface-sunken">
+                <Link href={`/employer/jobs/${applicant.job_id}`} className="card card-interactive flex flex-wrap items-center justify-between gap-3 p-4">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{applicant.full_name}</p>
                     <p className="text-sm text-muted">

@@ -41,7 +41,7 @@ export default async function AdminDisputesPage() {
       />
 
       {disputes.length === 0 ? (
-        <EmptyState icon="⚖" title="No open disputes." description="Nothing needs deciding right now." />
+        <EmptyState icon="scales" title="No open disputes." description="Nothing needs deciding right now." />
       ) : (
         <DisputeQueue
           disputes={disputes.map((dispute) => ({

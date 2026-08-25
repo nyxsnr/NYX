@@ -8,6 +8,7 @@
  */
 import type { ReactNode } from 'react';
 import Link from 'next/link';
+import { Icon, type IconName } from '../icons';
 
 // ---------------------------------------------------------------------------
 // Layout
@@ -28,6 +29,34 @@ export function Card({
 export function PageHeader({
   title,
   description,
+  eyebrow,
+  action,
+}: {
+  title: string;
+  description?: string;
+  /** Small label above the title, naming the section this page sits in. */
+  eyebrow?: string;
+  action?: ReactNode;
+}) {
+  return (
+    <header className="mb-7 border-b pb-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="min-w-0">
+          {eyebrow ? <p className="eyebrow mb-2">{eyebrow}</p> : null}
+          <h1 className="text-2xl font-bold sm:text-[2rem] sm:leading-tight">{title}</h1>
+          {description ? (
+            <p className="mt-2 max-w-2xl text-sm text-secondary sm:text-base">{description}</p>
+          ) : null}
+        </div>
+        {action ? <div className="shrink-0">{action}</div> : null}
+      </div>
+    </header>
+  );
+}
+
+export function SectionHeading({
+  title,
+  description,
   action,
 }: {
   title: string;
@@ -35,21 +64,12 @@ export function PageHeader({
   action?: ReactNode;
 }) {
   return (
-    <header className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div className="mb-4 flex items-end justify-between gap-3">
       <div className="min-w-0">
-        <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{title}</h1>
-        {description ? <p className="mt-1 text-secondary text-sm sm:text-base">{description}</p> : null}
+        <h2 className="text-lg font-semibold">{title}</h2>
+        {description ? <p className="mt-1 text-sm text-secondary">{description}</p> : null}
       </div>
       {action ? <div className="shrink-0">{action}</div> : null}
-    </header>
-  );
-}
-
-export function SectionHeading({ title, action }: { title: string; action?: ReactNode }) {
-  return (
-    <div className="mb-3 flex items-center justify-between gap-3">
-      <h2 className="text-lg font-semibold">{title}</h2>
-      {action}
     </div>
   );
 }
@@ -102,15 +122,15 @@ export function EvidenceBadge({
   level: 'SELF_REPORTED' | 'AI_INFERRED' | 'SIMULATION_VERIFIED' | 'EMPLOYER_VERIFIED';
 }) {
   const config = {
-    SELF_REPORTED: { tone: 'neutral' as const, label: 'Self-reported', icon: '○' },
-    AI_INFERRED: { tone: 'info' as const, label: 'AI-assessed', icon: '◐' },
-    SIMULATION_VERIFIED: { tone: 'success' as const, label: 'Simulation verified', icon: '●' },
-    EMPLOYER_VERIFIED: { tone: 'success' as const, label: 'Employer verified', icon: '★' },
+    SELF_REPORTED: { tone: 'neutral' as const, label: 'Self-reported', icon: 'user' as IconName },
+    AI_INFERRED: { tone: 'info' as const, label: 'AI-assessed', icon: 'sparkles' as IconName },
+    SIMULATION_VERIFIED: { tone: 'success' as const, label: 'Simulation verified', icon: 'badge-check' as IconName },
+    EMPLOYER_VERIFIED: { tone: 'success' as const, label: 'Employer verified', icon: 'shield' as IconName },
   }[level];
 
   return (
     <Badge tone={config.tone}>
-      <span aria-hidden="true">{config.icon}</span>
+      <Icon name={config.icon} size={13} />
       {config.label}
     </Badge>
   );
@@ -139,24 +159,28 @@ export function EmptyState({
   description,
   actionLabel,
   actionHref,
-  icon = '◇',
+  icon = 'compass',
 }: {
   title: string;
   description: string;
   actionLabel?: string;
   actionHref?: string;
-  icon?: string;
+  icon?: IconName;
 }) {
   return (
-    <div className="card flex flex-col items-center px-6 py-10 text-center">
-      <span aria-hidden="true" className="mb-3 text-3xl text-muted">
-        {icon}
+    <div className="card flex flex-col items-center px-6 py-14 text-center">
+      <span
+        aria-hidden="true"
+        className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-jade-50 text-jade-600 dark:bg-jade-950 dark:text-jade-300"
+      >
+        <Icon name={icon} size={26} />
       </span>
       <p className="text-base font-semibold">{title}</p>
-      <p className="mt-1 max-w-md text-sm text-secondary">{description}</p>
+      <p className="mt-1.5 max-w-md text-sm text-secondary">{description}</p>
       {actionLabel && actionHref ? (
-        <Link href={actionHref} className="btn btn-primary mt-4">
+        <Link href={actionHref} className="btn btn-primary btn-pill mt-6">
           {actionLabel}
+          <Icon name="arrow-right" size={16} />
         </Link>
       ) : null}
     </div>
@@ -196,14 +220,17 @@ export function ScoreBar({
         </div>
       ) : null}
       <div
-        className="h-2 w-full overflow-hidden rounded-full surface-sunken"
+        className="h-2.5 w-full overflow-hidden rounded-full surface-sunken"
         role="meter"
         aria-valuenow={Math.round(value)}
         aria-valuemin={0}
         aria-valuemax={max}
         aria-label={label ?? 'Score'}
       >
-        <div className={`h-full rounded-full ${colour}`} style={{ width: `${pct}%` }} />
+          <div
+          className={`h-full rounded-full ${colour}`}
+          style={{ width: `${pct}%`, transition: 'width var(--dur-slow) var(--ease-soft)' }}
+        />
       </div>
     </div>
   );
@@ -230,6 +257,7 @@ export function ScoreRing({ score, size = 120, band }: { score: number; size?: n
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
+          style={{ transition: 'stroke-dashoffset var(--dur-slow) var(--ease-soft)' }}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -245,23 +273,33 @@ export function Stat({
   value,
   hint,
   tone,
+  icon,
 }: {
   label: string;
   value: string | number;
   hint?: string;
   tone?: 'jade' | 'ochre';
+  icon?: IconName;
 }) {
+  const valueTone =
+    tone === 'jade'
+      ? 'text-jade-600 dark:text-jade-300'
+      : tone === 'ochre'
+        ? 'text-ochre-600 dark:text-ochre-300'
+        : '';
+
   return (
-    <div className="card p-4">
-      <p className="text-xs font-medium uppercase tracking-wide text-muted">{label}</p>
-      <p
-        className={`mt-1 text-2xl font-bold tabular-nums ${
-          tone === 'jade' ? 'text-jade-600 dark:text-jade-300' : tone === 'ochre' ? 'text-ochre-600 dark:text-ochre-300' : ''
-        }`}
-      >
-        {value}
-      </p>
-      {hint ? <p className="mt-1 text-xs text-muted">{hint}</p> : null}
+    <div className="card p-5">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted">{label}</p>
+        {icon ? (
+          <span aria-hidden="true" className="shrink-0 text-muted">
+            <Icon name={icon} size={18} />
+          </span>
+        ) : null}
+      </div>
+      <p className={`mt-2 text-3xl font-extrabold leading-none tabular-nums ${valueTone}`}>{value}</p>
+      {hint ? <p className="mt-2 text-xs text-muted">{hint}</p> : null}
     </div>
   );
 }

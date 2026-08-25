@@ -44,7 +44,7 @@ export default async function EmployerTasksPage() {
 
       {items.length === 0 ? (
         <EmptyState
-          icon="⚡"
+          icon="bolt"
           title="No tasks yet."
           description="A task is a specific piece of work with a defined output — no headcount required. Describe a whole project and we will break it into tasks for you."
           actionLabel="Describe a project"
@@ -54,7 +54,7 @@ export default async function EmployerTasksPage() {
         <ul className="space-y-2">
           {items.map((task) => (
             <li key={task.id}>
-              <Link href={`/employer/tasks/${task.id}`} className="card flex flex-wrap items-center justify-between gap-3 p-4 hover:surface-sunken">
+              <Link href={`/employer/tasks/${task.id}`} className="card card-interactive flex flex-wrap items-center justify-between gap-3 p-4">
                 <div className="min-w-0">
                   <p className="truncate font-semibold">{task.title}</p>
                   <p className="text-sm text-muted">

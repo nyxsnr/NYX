@@ -92,7 +92,7 @@ export default async function ReadinessPage() {
           <ol className="space-y-3">
             {readiness.improvements.map((action, index) => (
               <li key={action.key}>
-                <Link href={action.href} className="card flex items-start gap-4 p-4 hover:surface-sunken">
+                <Link href={action.href} className="card card-interactive flex items-start gap-4 p-4">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-jade-600 font-bold text-white">
                     {index + 1}
                   </span>

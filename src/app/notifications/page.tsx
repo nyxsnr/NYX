@@ -38,7 +38,7 @@ export default async function NotificationsPage() {
       />
 
       {notifications.length === 0 ? (
-        <EmptyState icon="🔔" title="Nothing yet." description="Updates about your applications, work and payments will appear here." />
+        <EmptyState icon="bell" title="Nothing yet." description="Updates about your applications, work and payments will appear here." />
       ) : (
         <ul className="space-y-2">
           {notifications.map((notification) => {
@@ -58,7 +58,7 @@ export default async function NotificationsPage() {
             return (
               <li key={notification.id}>
                 {notification.action_url ? (
-                  <Link href={notification.action_url} className="card block p-4 hover:surface-sunken">
+                  <Link href={notification.action_url} className="card card-interactive block p-4">
                     {body}
                   </Link>
                 ) : (

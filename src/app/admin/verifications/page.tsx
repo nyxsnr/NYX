@@ -34,7 +34,7 @@ export default async function AdminVerificationsPage() {
       />
 
       {records.length === 0 ? (
-        <EmptyState icon="✓" title="Nothing pending." description="No verification requests are waiting." />
+        <EmptyState icon="badge-check" title="Nothing pending." description="No verification requests are waiting." />
       ) : (
         <VerificationQueue
           records={records.map((record) => ({

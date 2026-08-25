@@ -76,7 +76,7 @@ export function PortfolioManager({
     <div className="space-y-6">
       {items.length === 0 && !adding ? (
         <EmptyState
-          icon="🗂"
+          icon="folder"
           title="Your portfolio is empty."
           description="Add two pieces of real work. Describe what you did and what changed as a result — that is what an employer is looking for."
         />

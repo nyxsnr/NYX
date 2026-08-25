@@ -79,7 +79,7 @@ export default async function WorkerDashboard() {
           <ul className="space-y-2">
             {activeWork.map((work) => (
               <li key={work.id}>
-                <Link href={`/worker/work/${work.id}`} className="card flex items-center justify-between gap-4 p-4 hover:surface-sunken">
+                <Link href={`/worker/work/${work.id}`} className="card card-interactive flex items-center justify-between gap-4 p-4">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{work.task_title}</p>
                     <p className="text-sm text-muted">
@@ -122,7 +122,7 @@ export default async function WorkerDashboard() {
               <ol className="mt-3 space-y-2">
                 {topActions.map((action, index) => (
                   <li key={action.key}>
-                    <Link href={action.href} className="flex items-start gap-3 rounded-lg p-2 hover:surface-sunken">
+                    <Link href={action.href} className="flex items-start gap-3 rounded-lg p-2">
                       <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-jade-600 text-xs font-bold text-white">
                         {index + 1}
                       </span>
@@ -151,7 +151,7 @@ export default async function WorkerDashboard() {
       {nothingMatches ? (
         <section className="mb-8">
           <EmptyState
-            icon="◎"
+            icon="compass"
             title="No opportunities match you yet."
             description={
               simulations.length > 0
@@ -177,7 +177,7 @@ export default async function WorkerDashboard() {
           <ul className="grid gap-3 sm:grid-cols-2">
             {jobs.map(({ job, match, alreadyApplied }) => (
               <li key={job.id}>
-                <Link href={`/worker/jobs/${job.id}`} className="card block h-full p-4 hover:surface-sunken">
+                <Link href={`/worker/jobs/${job.id}`} className="card card-interactive block h-full p-4">
                   <div className="flex items-start justify-between gap-3">
                     <p className="font-semibold leading-snug">{job.title}</p>
                     <MatchBadge score={match.score} />
@@ -215,7 +215,7 @@ export default async function WorkerDashboard() {
           <ul className="grid gap-3 sm:grid-cols-2">
             {tasks.map(({ task, match }) => (
               <li key={task.id}>
-                <Link href={`/worker/tasks/${task.id}`} className="card block h-full p-4 hover:surface-sunken">
+                <Link href={`/worker/tasks/${task.id}`} className="card card-interactive block h-full p-4">
                   <div className="flex items-start justify-between gap-3">
                     <p className="font-semibold leading-snug">{task.title}</p>
                     <MatchBadge score={match.score} />

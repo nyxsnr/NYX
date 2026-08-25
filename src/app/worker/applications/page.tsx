@@ -36,7 +36,7 @@ export default async function ApplicationsPage() {
       <>
         <PageHeader title="Your applications" />
         <EmptyState
-          icon="📄"
+          icon="document"
           title="You have not applied to anything yet."
           description="Apply where your match score is 60 or above and you can evidence the core requirement. Five targeted applications beat fifty generic ones."
           actionLabel="See jobs matched to you"
@@ -58,7 +58,7 @@ export default async function ApplicationsPage() {
               <li key={application.id}>
                 <Link
                   href={application.assignment_id ? `/worker/work/${application.assignment_id}` : `/worker/tasks/${application.task_id}`}
-                  className="card flex flex-wrap items-center justify-between gap-3 p-4 hover:surface-sunken"
+                  className="card card-interactive flex flex-wrap items-center justify-between gap-3 p-4"
                 >
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{application.task_title}</p>
@@ -83,7 +83,7 @@ export default async function ApplicationsPage() {
           <ul className="space-y-2">
             {jobs.items.map((application) => (
               <li key={application.id}>
-                <Link href={`/worker/jobs/${application.job_id}`} className="card flex flex-wrap items-center justify-between gap-3 p-4 hover:surface-sunken">
+                <Link href={`/worker/jobs/${application.job_id}`} className="card card-interactive flex flex-wrap items-center justify-between gap-3 p-4">
                   <div className="min-w-0">
                     <p className="truncate font-semibold">{application.job_title}</p>
                     <p className="text-sm text-muted">

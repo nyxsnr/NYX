@@ -3,13 +3,13 @@ import { AppShell, type NavItem } from '@/components/app-shell';
 import { unreadCount } from '@/lib/notifications';
 
 const NAV: NavItem[] = [
-  { href: '/employer', label: 'Home', icon: '◆' },
-  { href: '/employer/jobs', label: 'Jobs', icon: '💼' },
-  { href: '/employer/tasks', label: 'Tasks', icon: '⚡' },
-  { href: '/employer/talent', label: 'Talent', icon: '🔍' },
-  { href: '/employer/billing', label: 'Billing', icon: '₭' },
-  { href: '/employer/projects', label: 'Projects', icon: '🗂' },
-  { href: '/employer/company', label: 'Company', icon: '🏢' },
+  { href: '/employer', label: 'Home', icon: 'home' },
+  { href: '/employer/jobs', label: 'Jobs', icon: 'briefcase' },
+  { href: '/employer/tasks', label: 'Tasks', icon: 'bolt' },
+  { href: '/employer/talent', label: 'Talent', icon: 'search' },
+  { href: '/employer/billing', label: 'Billing', icon: 'wallet' },
+  { href: '/employer/projects', label: 'Projects', icon: 'folder' },
+  { href: '/employer/company', label: 'Company', icon: 'building' },
 ];
 
 export default async function EmployerLayout({ children }: { children: React.ReactNode }) {

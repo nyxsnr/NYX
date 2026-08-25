@@ -1,5 +1,31 @@
 import type { Metadata, Viewport } from 'next';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
+
+/**
+ * Typefaces.
+ *
+ * `globals.css` named Inter as the body face but nothing ever loaded it, so
+ * the whole product had been rendering in whatever system-ui resolved to.
+ *
+ * Space Grotesk carries the display sizes: at 4rem and up its tight apertures
+ * and squared terminals give headlines a technical edge that Inter, which is
+ * built to disappear, deliberately does not have. Both are self-hosted by
+ * next/font at build time — no request to Google at runtime, and no layout
+ * shift while a webfont swaps in.
+ */
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  display: 'swap',
+  variable: '--font-display-face',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +61,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"

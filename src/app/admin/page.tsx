@@ -61,7 +61,7 @@ export default async function AdminOverview() {
               .filter((item) => item.value > 0)
               .map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="card block p-4 hover:surface-sunken">
+                  <Link href={item.href} className="card card-interactive block p-4">
                     <p className="text-xs uppercase tracking-wide text-muted">{item.label}</p>
                     <p className="mt-1 text-2xl font-bold tabular-nums text-ochre-600 dark:text-ochre-300">{item.value}</p>
                   </Link>
